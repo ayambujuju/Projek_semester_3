@@ -1,0 +1,187 @@
+/*
+ * Admin Dashboard Styles
+ * ----------------------
+ * A more elegant and modern theme for the Check Cargo admin panel.
+ */
+
+:root {
+    --primary-color: #4a69bd; /* A calming blue */
+    --secondary-color: #6a89cc; /* A lighter shade of blue */
+    --accent-color: #f6e58d; /* A soft yellow for highlights */
+    --bg-color: #f8f9fa; /* A very light grey for the background */
+    --text-color: #343a40; /* A dark grey for text */
+    --card-bg: #ffffff; /* White for cards */
+    --sidebar-bg: #2c3e50; /* A deep, dark blue for the sidebar */
+    --sidebar-text: #ecf0f1; /* A light grey for sidebar text */
+    --sidebar-active: var(--primary-color);
+    --border-color: #dee2e6;
+    --shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075);
+    --shadow-md: 0 .5rem 1rem rgba(0,0,0,.15);
+}
+
+html, body {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Nunito', sans-serif; /* A modern, friendly font */
+}
+
+#wrapper {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+    transition: all 0.3s ease;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    transition: margin 0.3s ease;
+    box-shadow: var(--shadow-md);
+    flex-shrink: 0; /* Prevent sidebar from shrinking */
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: -250px;
+}
+
+.sidebar-heading {
+    padding: 1.5rem 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sidebar-text);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.list-group-item {
+    border: none;
+    padding: 1rem 1.25rem;
+    color: var(--sidebar-text);
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.list-group-item.active {
+    background-color: var(--sidebar-active) !important;
+    border-left: 5px solid var(--accent-color);
+    color: #fff;
+}
+
+#page-content-wrapper {
+    flex-grow: 1; /* Take all available space */
+    overflow-y: auto; /* Enable vertical scrolling for content */
+    transition: width 0.3s ease;
+}
+
+/* Responsive adjustments for sidebar */
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        width: auto; /* Let flex-grow handle width */
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -250px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    #sidebar-wrapper {
+        margin-left: -250px;
+        position: fixed;
+        z-index: 1000;
+    }
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: 0;
+    }
+    #page-content-wrapper {
+        width: 100%;
+    }
+}
+
+.navbar {
+    background-color: var(--card-bg) !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.card-header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.stat-card .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card h5 {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-card .stat-icon {
+    font-size: 3.5rem;
+    opacity: 0.15;
+    color: var(--text-color);
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #3b5a9a;
+    border-color: #3b5a9a;
+}
+
+/* Add a nice touch to the modals */
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
